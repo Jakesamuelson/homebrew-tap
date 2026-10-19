@@ -12,6 +12,23 @@ cask "linger" do
 
   app "Linger.app"
 
+  # Anonymous install counter (GoatCounter — no personal data, see https://lingermac.goatcounter.com).
+  # Homebrew doesn't track installs for third-party taps on its own, so this is the only way to
+  # know how many people install via brew. Fails silently and never blocks the install.
+  postflight do
+    system_command "/usr/bin/curl",
+                    args: ["-fsS", "--max-time", "3", "-o", "/dev/null",
+                           "https://lingermac.goatcounter.com/count?p=brew-install&t=Homebrew+install&e=1"],
+                    must_succeed: false
+  end
+
+  caveats do
+    <<~EOS
+      Installing pings an anonymous counter (no personal data) so we know roughly how
+      many people use Homebrew to install Linger. See https://lingermac.goatcounter.com.
+    EOS
+  end
+
   uninstall quit: "com.jakesamuelson.linger"
 
   zap trash: [
