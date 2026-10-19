@@ -1,6 +1,6 @@
 cask "linger" do
-  version "1.0.4"
-  sha256 "64fb71f8dc2bbe35eae58a500bc82092a372410b2869b1289296068daf4b2a75"
+  version "1.1.0"
+  sha256 "faa25d956905289ca5809c24fb1018e2205ff49fc1064aa24edcfa92539c4906"
 
   url "https://lingermac.com/updates/Linger-#{version}.dmg"
   name "Linger"
